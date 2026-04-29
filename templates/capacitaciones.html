@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Capacitaciones SST | Soluciones Administrativas{% endblock %}
+
+{% block content %}
+    <!-- Encabezado Personalizado (Capacitaciones) -->
+    <header class="page-header header-capacitaciones">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="banner-watermark">
+        <div class="container hero-content">
+            <h1>Capacitaciones en SST</h1>
+            <p>Promovemos una cultura de prevención y cuidado del talento humano.</p>
+        </div>
+    </header>
+
+    <!-- Capacitaciones -->
+    <section class="capacitaciones reveal" id="capacitaciones">
+        <div class="container two-columns reverse">
+            <div class="content-wrapper">
+                <h2>Formaciones Clave</h2>
+                <p>Nuestras capacitaciones están diseñadas para generar impacto real en la seguridad y salud de su personal:</p>
+                <div class="grid-list">
+                    <ul class="list-check">
+                        <li><i class="fas fa-chalkboard-teacher"></i> Estilos de vida saludable</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Salud mental y manejo del estrés</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Ergonomía básica y pausas activas</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Primeros auxilios básicos</li>
+                    </ul>
+                    <ul class="list-check">
+                        <li><i class="fas fa-chalkboard-teacher"></i> Uso de EPP y trabajo seguro</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Prevención de accidentes laborales</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Identificación de peligros</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Derechos y deberes del trabajador</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="{{ url_for('static', filename='img/capacitacion_sst.png') }}" alt="Capacitación en Seguridad y Salud">
+            </div>
+        </div>
+    </section>
+{% endblock %}

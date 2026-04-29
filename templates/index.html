@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | Soluciones Administrativas{% endblock %}
+
+{% block content %}
+    <!-- Hero Section Fotográfico -->
+    <header class="page-header header-inicio" id="inicio">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="banner-watermark">
+        <div class="hero-content">
+            <h1>Soluciones Administrativas <br> Integrales en Salud Laboral.</h1>
+            <h2 class="hero-subtitle">Tu tranquilidad empieza con el bienestar de tus trabajadores.</h2>
+            <p class="description">Optimice su empresa y cuide a su equipo con asesoría experta.<br>Contácteme directamente.</p>
+            
+            <div class="cta-buttons mockup-buttons">
+                <a href="https://wa.me/573000000000?text=Hola,%20quisiera%20más%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-whatsapp-solid">
+                    <i class="fab fa-whatsapp"></i> Agendar Cita por WhatsApp
+                </a>
+                <a href="https://instagram.com/tu_usuario" target="_blank" class="btn btn-instagram-solid">
+                    <i class="fab fa-instagram"></i> Ver mi Perfil de Instagram
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tarjetas Destacadas según Mockup -->
+    <section class="tarjetas-destacadas reveal">
+        <div class="container mockup-cards-container">
+            <a href="/servicios" class="mockup-card">
+                <div class="mockup-card-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2874/2874745.png" alt="Icono Asesoría">
+                </div>
+                <p>Asesoría en Cumplimiento Normativo (SG-SST).</p>
+                <span class="card-action">Ver Servicios <i class="fas fa-arrow-right"></i></span>
+            </a>
+            
+            <a href="/capacitaciones" class="mockup-card">
+                <div class="mockup-card-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2942/2942813.png" alt="Icono Auditorías">
+                </div>
+                <p>Auditorías y Capacitaciones de Salud Laboral.</p>
+                <span class="card-action">Ver Capacitaciones <i class="fas fa-arrow-right"></i></span>
+            </a>
+            
+            <a href="/servicios" class="mockup-card">
+                <div class="mockup-card-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2916/2916315.png" alt="Icono Seguros">
+                </div>
+                <p>Gestión de Trámites y Referenciación de Seguros.</p>
+                <span class="card-action">Ver Servicios <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,798 @@
+/* ==========================================================================
+   Variables & Reset
+   ========================================================================== */
+:root {
+    /* Paleta Corporativa (Basada en Logo Mockup) */
+    --primary: #003366; /* Azul oscuro del logo */
+    --primary-light: #2a6baf; /* Azul medio de las formas */
+    --primary-dark: #001a33;
+    
+    --secondary: #619b41; /* Verde medio de las formas */
+    --secondary-light: #7bc156;
+    --secondary-dark: #3b7021; /* Verde oscuro del boton y forma */
+    
+    /* Neutros */
+    --bg-light: #f5f7fa; 
+    --bg-hero: #e8f1f5; /* Fondo celeste premium del hero */
+    --text-main: #002244; /* Texto muy oscuro azulado para contraste premium */
+    --text-muted: #334155;
+    --white: #ffffff;
+    
+    /* Efectos Premium */
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --btn-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   Navegación (Navbar) Premium Mockup
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-sm);
+    padding: 5px 0;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 85px; /* Logo bastante más grande según solicitud */
+    transition: var(--transition);
+}
+
+.navbar.scrolled .nav-logo img {
+    height: 70px; /* Se achica un poco al scrollear */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Efecto hover premium y estado activo */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--secondary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--secondary-dark);
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Hero Section (Premium Geometric Mockup)
+   ========================================================================== */
+.mockup-hero {
+    position: relative;
+    background-color: var(--bg-hero);
+    padding: 220px 20px 120px; /* Mucho espacio para que respire */
+    text-align: center;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Formas geométricas complejas */
+.hero-shape {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Triángulo superior izquierdo (Azul medio) */
+.shape-blue-1 {
+    background: var(--primary-light);
+    clip-path: polygon(0 0, 35% 0, 0 65%);
+    opacity: 0.9;
+}
+
+/* Triángulo inferior izquierdo (Azul oscuro) */
+.shape-blue-2 {
+    background: var(--primary);
+    clip-path: polygon(0 25%, 28% 100%, 0 100%);
+}
+
+/* Triángulo superior derecho (Verde medio) */
+.shape-green-1 {
+    background: var(--secondary);
+    clip-path: polygon(100% 0, 65% 0, 100% 65%);
+    opacity: 0.8;
+}
+
+/* Triángulo inferior derecho (Verde oscuro) */
+.shape-green-2 {
+    background: var(--secondary-dark);
+    clip-path: polygon(100% 25%, 72% 100%, 100% 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(232, 241, 245, 0.4); /* Leve overlay para legibilidad si intersecta */
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.mockup-hero h1 {
+    color: var(--text-main);
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    color: var(--secondary-light); /* Verde claro para contraste en glassmorphism */
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.mockup-hero .description {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+}
+
+/* ==========================================================================
+   Botones Premium
+   ========================================================================== */
+.mockup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp-solid, .btn-instagram-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 35px;
+    text-decoration: none;
+    border-radius: 10px; /* Bordes suaves premium */
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+    transition: var(--transition);
+    box-shadow: var(--btn-shadow);
+}
+
+.btn-whatsapp-solid {
+    background-color: var(--secondary-dark); /* Verde oscuro */
+}
+
+.btn-whatsapp-solid:hover {
+    background-color: #274f16;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.btn-instagram-solid {
+    background-color: var(--primary); /* Azul oscuro */
+}
+
+.btn-instagram-solid:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.btn-whatsapp-solid i, .btn-instagram-solid i {
+    margin-right: 12px;
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   Tarjetas Destacadas
+   ========================================================================== */
+.tarjetas-destacadas {
+    background-color: transparent;
+    padding: 0 20px 80px;
+    margin-top: -80px; /* Superposición extrema premium */
+    position: relative;
+    z-index: 10;
+}
+
+.mockup-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mockup-card {
+    flex: 1;
+    min-width: 300px;
+    background: var(--white);
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    text-decoration: none; /* Porque ahora es un enlace */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mockup-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    border-color: rgba(0, 51, 102, 0.1);
+}
+
+.mockup-card-icon img {
+    width: 60px;
+    height: auto;
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.mockup-card:hover .mockup-card-icon img {
+    transform: scale(1.1);
+}
+
+.mockup-card p {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+.card-action {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    opacity: 0.8;
+}
+
+.mockup-card:hover .card-action {
+    opacity: 1;
+    color: var(--secondary-dark);
+    transform: translateX(5px);
+}
+
+/* ==========================================================================
+   Banners Personalizados Fotográficos (Subpáginas)
+   ========================================================================== */
+.page-header {
+    position: relative;
+    padding: 160px 20px 60px;
+    text-align: center;
+    overflow: hidden;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* Efecto de Iluminación Hover (Spotlight Dinámico) */
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* Capa oscura más suave por defecto */
+    transition: background 0.5s ease;
+    z-index: 1;
+    pointer-events: none; /* Permite que el mouse detecte la caja contenedora */
+}
+
+/* Efecto linterna activado por JS */
+.page-header.spotlight-active::before {
+    background: radial-gradient(
+        circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.6) 100% /* Mucho menos oscuro en los bordes */
+    );
+    transition: opacity 0.3s ease; /* Solo suavizar la opacidad si fuera necesario */
+}
+
+/* Marca de Agua Dinámica (Logo que sigue la luz) */
+.banner-watermark {
+    position: absolute;
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
+    transform: translate(-50%, -50%);
+    width: 180px; /* Más pequeño para verse completo en la linterna */
+    opacity: 0.5; /* Mucho más visible */
+    z-index: 0; /* Detrás de la linterna y el glassmorphism */
+    pointer-events: none;
+}
+
+/* Caja Tipo "Pill" (Pastilla) Glassmorphism */
+.page-header .hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 60px;
+    padding: 30px 60px;
+    display: inline-block;
+    transition: transform 0.5s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.page-header:hover .hero-content {
+    transform: scale(1.02);
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.page-header p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    max-width: 750px;
+    margin: 0 auto;
+    color: var(--white);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Imágenes Base (El oscurecimiento lo hace el ::before) */
+.header-nosotros {
+    background-image: url('../img/banner_nosotros.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.header-servicios {
+    background-image: url('../img/banner_servicios.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.header-capacitaciones {
+    background-image: url('../img/banner_capacitaciones.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 4. Header Inicio (Home Page) */
+.header-inicio {
+    background-image: url('../img/banner_inicio.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh; /* Más alto que los banners internos */
+    padding-top: 180px; /* Para empujar el contenido debajo de la navbar */
+}
+.header-inicio .hero-content {
+    margin-bottom: 40px; /* Separación extra por las tarjetas montadas */
+}
+
+/* ==========================================================================
+   Resto del Contenido (Layouts Globales)
+   ========================================================================== */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.two-columns {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 100px 20px;
+}
+
+.two-columns.reverse {
+    flex-direction: row-reverse;
+}
+
+.image-wrapper {
+    flex: 1;
+}
+
+.image-wrapper img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+.content-wrapper h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.content-wrapper p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.list-check, .list-bullet {
+    list-style: none;
+}
+
+.list-check li, .list-bullet li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.list-check li i {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+.list-bullet li::before {
+    content: "•";
+    position: absolute;
+    left: 10px;
+    color: var(--primary);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* ==========================================================================
+   Servicios Secundarios
+   ========================================================================== */
+.servicios {
+    padding: 100px 20px;
+    background: var(--bg-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    color: var(--primary);
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.tarjeta {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border-top: 5px solid var(--secondary);
+    transition: var(--transition);
+}
+
+.tarjeta-img {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-img-header {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.tarjeta-img-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tarjeta:hover .tarjeta-img-header img {
+    transform: scale(1.08);
+}
+
+.tarjeta-body {
+    padding: 35px 30px;
+    flex: 1;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+    border-top-color: var(--primary);
+}
+
+.tarjeta-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(46, 125, 50, 0.05);
+    color: var(--secondary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.tarjeta:hover .tarjeta-icon {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.tarjeta h3, .tarjeta-body h3 { 
+    color: var(--text-main); 
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+}
+
+/* ==========================================================================
+   Footer Mockup Style
+   ========================================================================== */
+.mockup-footer {
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 60px 20px 30px;
+}
+
+.footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start; /* Evita que el contenedor estire el logo */
+}
+
+.footer-logo-img {
+    height: 70px; /* Logo ajustado y grande */
+    width: auto;
+    object-fit: contain; /* Garantiza que nunca se deforme */
+}
+
+.footer-left p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.horario-mini p {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.contacto-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.footer-buttons {
+    justify-content: flex-end;
+}
+
+.btn-sm {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 30px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Animaciones (Reveal on Scroll)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .mockup-hero h1 { font-size: 2.8rem; }
+    .shape-blue-1 { clip-path: polygon(0 0, 50% 0, 0 50%); }
+    .shape-green-1 { clip-path: polygon(100% 0, 50% 0, 100% 50%); }
+    .tarjetas-destacadas { margin-top: -40px; }
+}
+
+@media (max-width: 992px) {
+    .two-columns, .two-columns.reverse {
+        flex-direction: column;
+        gap: 40px;
+        padding: 80px 20px;
+    }
+    .grid-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container { padding: 10px 20px; }
+    .nav-logo img { height: 60px; }
+    .navbar.scrolled .nav-logo img { height: 50px; }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 30px;
+        box-shadow: var(--shadow-md);
+        gap: 20px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+    }
+    
+    .mockup-hero {
+        padding: 160px 20px 80px;
+    }
+    .mockup-hero h1 {
+        font-size: 2.2rem;
+    }
+    .shape-blue-1, .shape-blue-2, .shape-green-1, .shape-green-2 {
+        opacity: 0.3; /* Menos opacos en móvil para no interferir con texto */
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-left, .footer-right {
+        align-items: center;
+        text-align: center;
+    }
+    .footer-buttons {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Portafolio de Servicios | Soluciones Administrativas{% endblock %}
+
+{% block content %}
+    <!-- Encabezado Personalizado (Servicios) -->
+    <header class="page-header header-servicios">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="banner-watermark">
+        <div class="container hero-content">
+            <h1>Portafolio de Servicios</h1>
+            <p>Soluciones integrales diseñadas para proteger a tu equipo y a tu empresa.</p>
+        </div>
+    </header>
+
+    <!-- Servicios (Portafolio Completo) -->
+    <section class="servicios reveal" id="servicios">
+        <div class="container">
+            <div class="grid-servicios">
+                <!-- SGSSS -->
+                <div class="tarjeta tarjeta-img">
+                    <div class="tarjeta-img-header">
+                        <img src="{{ url_for('static', filename='img/servicio_sgsss.png') }}" alt="Administración en Salud SGSSS">
+                    </div>
+                    <div class="tarjeta-body">
+                        <h3>SGSSS – Administración en Salud</h3>
+                        <ul class="list-bullet">
+                            <li><strong>Afiliaciones y Novedades:</strong> EPS, ARL, AFP, Caja de Compensación y traslados. Reporte de ingreso, retiro, salarios y gestión de incapacidades.</li>
+                            <li><strong>Manejo de Planilla PILA:</strong> Liquidación mensual y corrección de errores.</li>
+                            <li><strong>Asesoría a Independientes:</strong> Cotización correcta, tipo de cotizante legal y base de cotización según tu actividad económica.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- SST -->
+                <div class="tarjeta tarjeta-img">
+                    <div class="tarjeta-img-header">
+                        <img src="{{ url_for('static', filename='img/servicio_sst.png') }}" alt="Seguridad y Salud en el Trabajo">
+                    </div>
+                    <div class="tarjeta-body">
+                        <h3>Seguridad y Salud en el Trabajo</h3>
+                        <ul class="list-bullet">
+                            <li><strong>Asesoría Básica:</strong> Diagnóstico inicial del SG-SST, obligaciones legales y acompañamiento documental.</li>
+                            <li><strong>Prevención y Control:</strong> Propuestas preventivas de accidentes, identificación de riesgos y motivación laboral.</li>
+                            <li><strong>Apoyo Administrativo:</strong> Revisión de documentos, cronogramas de actividades y seguimiento a planes de mejora.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Seguros -->
+                <div class="tarjeta tarjeta-img">
+                    <div class="tarjeta-img-header">
+                        <img src="{{ url_for('static', filename='img/servicio_seguros.png') }}" alt="Gestión de Seguros">
+                    </div>
+                    <div class="tarjeta-body">
+                        <h3>Gestión de Seguros</h3>
+                        <p class="small-text">Referenciación directa con nuestra aseguradora aliada legalmente autorizada (SIMAS).</p>
+                        <ul class="list-bullet mt-2">
+                            <li><strong>Salud y Personas:</strong> Medicina prepagada, planes complementarios y accidentes personales.</li>
+                            <li><strong>Para tu Negocio:</strong> Seguro multirriesgo, locales comerciales, maquinaria, inventarios, caja/dinero y lucro cesante.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

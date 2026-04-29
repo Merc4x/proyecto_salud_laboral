@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Especialistas en asesoría de Seguridad Social y SST para PYMES, independientes y empleadores. Tu tranquilidad empieza con el bienestar de tus trabajadores.">
+    <title>{% block title %}Soluciones Administrativas en Salud Laboral | Asesoría SST{% endblock %}</title>
+    
+    <!-- Google Fonts: Outfit (Headings) and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="{{ url_for('inicio') }}">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Soluciones Administrativas en Salud Laboral">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('inicio') }}" class="{{ 'active' if active_page == 'inicio' else '' }}">Inicio</a></li>
+                <li><a href="{{ url_for('nosotros') }}" class="{{ 'active' if active_page == 'nosotros' else '' }}">Para Quién</a></li>
+                <li><a href="{{ url_for('servicios') }}" class="{{ 'active' if active_page == 'servicios' else '' }}">Servicios</a></li>
+                <li><a href="{{ url_for('capacitaciones') }}" class="{{ 'active' if active_page == 'capacitaciones' else '' }}">Capacitaciones</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Block -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer según Mockup -->
+    <footer id="contacto" class="mockup-footer reveal">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Soluciones Administrativas" class="footer-logo-img">
+                <p>Especialistas en PYMES, independientes y empleadores.</p>
+                <div class="horario-mini">
+                    <p><strong><i class="far fa-clock"></i> Horario:</strong> Lunes a Sábado 10:00 a.m. - 5:00 p.m.</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="contacto-title">Contacto</p>
+                <div class="cta-buttons mockup-buttons footer-buttons">
+                    <a href="https://wa.me/573000000000" target="_blank" class="btn btn-whatsapp-solid btn-sm">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/tu_usuario" target="_blank" class="btn btn-instagram-solid btn-sm">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Soluciones Administrativas en Salud Laboral. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para Animaciones al Scroll -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Scroll Reveal Animation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+
+            // Spotlight Banner Effect
+            const headers = document.querySelectorAll('.page-header');
+            
+            headers.forEach(header => {
+                header.addEventListener('mousemove', e => {
+                    const rect = header.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    header.style.setProperty('--mouse-x', `${x}px`);
+                    header.style.setProperty('--mouse-y', `${y}px`);
+                });
+
+                header.addEventListener('mouseenter', () => {
+                    header.classList.add('spotlight-active');
+                });
+
+                header.addEventListener('mouseleave', () => {
+                    header.classList.remove('spotlight-active');
+                    // Volver al centro cuando el mouse sale
+                    header.style.setProperty('--mouse-x', `50%`);
+                    header.style.setProperty('--mouse-y', `50%`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

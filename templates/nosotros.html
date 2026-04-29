@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Para Quién Trabajamos | Soluciones Administrativas{% endblock %}
+
+{% block content %}
+    <!-- Encabezado Personalizado (Nosotros) -->
+    <header class="page-header header-nosotros">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="banner-watermark">
+        <div class="container hero-content">
+            <h1>Para Quién Trabajamos</h1>
+            <p>Conozca el perfil de nuestros clientes clave.</p>
+        </div>
+    </header>
+
+    <!-- Clientes Clave (Para Quién) -->
+    <section class="para-quien reveal" id="para-quien">
+        <div class="container two-columns">
+            <div class="image-wrapper">
+                <img src="{{ url_for('static', filename='img/clientes_pyme.png') }}" alt="Trabajadores en oficina, PYMES">
+            </div>
+            <div class="content-wrapper">
+                <h2>Soluciones a su Medida</h2>
+                <p>Nuestra gestión está enfocada en brindar soluciones adaptadas a las necesidades específicas de:</p>
+                <ul class="list-check">
+                    <li><i class="fas fa-check-circle"></i> <strong>Independientes:</strong> Conductores, comerciantes, profesionales.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Microempresas:</strong> Negocios de 1 a 10 empleados.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Empresas sin área administrativa:</strong> Te quitamos la carga operativa.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Emprendedores informales:</strong> En proceso de formalización.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Empresas con SG-SST:</strong> Que buscan reorganizar y optimizar su sistema.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
